@@ -41,6 +41,8 @@ stages:
         versionSpec: '$(pythonVersion)'
         addToPath: true
         architecture: x64
+      env:
+        RUNNER_TOOL_CACHE: /opt/hostedtoolcache
       displayName: 'Use Python $(pythonVersion)'
 
     - script: |
