@@ -16,6 +16,9 @@ variables:
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
 
+  # Agent VM pool name
+  poolName: 'prod-agent-pool'
+
   # Environment name
   environmentName: 'flask-sklearn-prod'
 
@@ -31,7 +34,7 @@ stages:
   jobs:
   - job: BuildJob
     pool:
-      vmImage: $(vmImageName)
+      name: $(poolName)
     steps:
     - task: UsePythonVersion@0
       inputs:
@@ -67,7 +70,7 @@ stages:
   jobs:
   - deployment: DeploymentJob
     pool:
-      vmImage: $(vmImageName)
+      name: $(poolName)
     environment: $(environmentName)
     strategy:
       runOnce:
