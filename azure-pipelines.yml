@@ -17,7 +17,7 @@ variables:
   vmImageName: 'ubuntu-latest'
 
   # Agent VM pool name
-  poolName: 'prod-agent-pool'
+  poolName: 'Default'
 
   # Environment name
   environmentName: 'flask-sklearn-prod'
