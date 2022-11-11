@@ -14,7 +14,7 @@ variables:
   webAppName: 'azure-cicdapp'
 
   # Pool name
-  devPool: 'dev-pool'
+  devPool: 'devpool'
 
   # Environment name
   environmentName: 'azure-cicdapp'
