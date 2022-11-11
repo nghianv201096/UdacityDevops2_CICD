@@ -1,3 +1,4 @@
+name: CI-For-Flask-Sklearn
 on: [push]
 
 jobs:
