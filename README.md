@@ -1,48 +1,78 @@
-# Overview
+![CI](https://github.com/nghianv201096/flask-sklearn/workflows/CI-For-Flask-Sklearn/badge.svg)
 
-<TODO: complete this with an overview of your project>
+# Overview
+This project demonstrate how to manage and devlop a python project using CI/CD with Azure Devops
 
 ## Project Plan
-<TODO: Project Plan
+* [Trello dashboard](https://trello.com/invite/b/LjM02f9V/ATTIc3ae49bf99e261765976ec7261453b1e9AAD8CCF/devops-cicd)
 
-* A link to a Trello board for the project
-* A link to a spreadsheet that includes the original and final project plan>
+* [Spreadsheet](https://docs.google.com/spreadsheets/d/13dpzdWq9o4rJQGc9_PalnsjQQR-BhnE6FWobD3n_l38/edit?usp=sharing)
 
 ## Instructions
 
-<TODO:  
-* Architectural Diagram (Shows how key parts of the system work)>
+### The architectural Diagram:
+![Architecture Diagram](./images/Doc_ArchitecturalDiagram.png )
 
-<TODO:  Instructions for running the Python project.  How could a user with no context run this project without asking you for any help.  Include screenshots with explicit steps to create that work. Be sure to at least include the following screenshots:
+### Instructions for running the Python project
+#### Project cloned into Azure Cloud Shell and test
+* Open Cloud shell using bash and clone project then go to project folder:
 
-* Project running on Azure App Service
+`$ git clone https://github.com/nghianv201096/flask-sklearn.git`
+`$ cd flask-sklearn`
 
-* Project cloned into Azure Cloud Shell
+![Architecture Diagram](./images/CI_CloneProject.png )
 
-* Passing tests that are displayed after running the `make all` command from the `Makefile`
+* Perfom testing 
+`$ python3 -m venv ~/.myrepo`
+`$ source ~/.myrepo/bin/activate`
+`$  make all`
 
-* Output of a test run
+![Architecture Diagram](./images/CI_TestProject.png )
+
+* See the testing result:
+After above step you see dependencies are installed, lint rate 10/10 and tests are passed as below:
+![Architecture Diagram](./images/CI_TestRunResult.png )
+#### Project running on Azure App Service
+
+* You can deploy this project direct to azure using command:
+`$az webapp up -n "azure-cicdapp"`
+
+And see the result deploy successfully:
+![Architecture Diagram](./images/CI_DeployApp.png )
+
+Can go to the url and check as well:
+![Architecture Diagram](./images/CI_UpSuccessful.png )
 
 * Successful deploy of the project in Azure Pipelines.  [Note the official documentation should be referred to and double checked as you setup CI/CD](https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/python-webapp?view=azure-devops).
+After follow the above link, each time you push code and run pipeline manually you can see the deply is successful like that:
+![Architecture Diagram](./images/CD_AzurePipelineRunSuccessfully.png)
+
+Note: the app service is created before, you can reference to **terraform** folder in project to see how to create the app service.
 
 * Running Azure App Service from Azure Pipelines automatic deployment
+![Architecture Diagram](./images/CD_AzureAppService.png)
 
 * Successful prediction from deployed flask app in Azure Cloud Shell.  [Use this file as a template for the deployed prediction](https://github.com/udacity/nd082-Azure-Cloud-DevOps-Starter-Code/blob/master/C2-AgileDevelopmentwithAzure/project/starter_files/flask-sklearn/make_predict_azure_app.sh).
 The output should look similar to this:
 
 ```bash
-udacity@Azure:~$ ./make_predict_azure_app.sh
-Port: 443
-{"prediction":[20.35373177134412]}
+$ ./make_predict_azure_app.sh
 ```
+![Architecture Diagram](./images/CD_MakePrediction.png)
+
+Note: I use the **LinearRegression** model, if you use other models the result can be different.
 
 * Output of streamed log files from deployed application
+`az webapp log tail -g azure-cicd-rg -n azure-cicdapp`
 
-> 
+![Architecture Diagram](./images/CD_DeployLog.png)
 
 ## Enhancements
 
-<TODO: A short description of how to improve the project in the future>
+In this project we only use one pipeline for one branch, in real life we need different branches for different environments so that we need:
+* create terraform file to apply IaC (already done)
+* create template then can create environment pipelines with ease
+So that each environment we have a set of resources and its own pipeline. Developer just merge the code to target branch, don have to care about build, test, deploy,...
 
 ## Demo 
 
