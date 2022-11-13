@@ -67,6 +67,9 @@ Note: I use the **LinearRegression** model, if you use other models the result c
 
 ![Architecture Diagram](./images/CD_DeployLog.png)
 
+* Output of locust load test
+![Architecture Diagram](./images/CI_Locust.png)
+
 ## Enhancements
 
 In this project we only use one pipeline for one branch, in real life we need different branches for different environments so that we need:
