@@ -67,6 +67,34 @@ Note: I use the **LinearRegression** model, if you use other models the result c
 
 ![Architecture Diagram](./images/CD_DeployLog.png)
 
+* Setup locust
+    * Install locust
+    ```
+    # open bash terminal
+
+    # update database
+    $ sudo apt update
+
+    # install pip3
+    $ sudo apt install python3-pip
+
+    # install locust
+    $ pip3 install locust
+    ```
+
+    * run locust
+    ```
+    $ locust
+    ```
+
+    * Go to url: **http://0.0.0.0:8089**
+
+    * Set the Host to your app service domain, exp: https://learn-azure.azurewebsites.com and can change the other params too
+
+    * Click **start swarming**
+
+    * Wait the tests done and then click **Stop** at the top right then you see the result as bellow
+
 * Output of locust load test
 ![Architecture Diagram](./images/CI_Locust.png)
 
